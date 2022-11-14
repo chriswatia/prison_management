@@ -26,7 +26,7 @@
                             <th>Address</th>
                             <th>Cell Block</th>
                             <th>Crime</th>
-                            <th>Offence</th>
+                            <th>Sentance</th>
                             <th>Date of Conviction</th>
                             <th>Release Date</th>
                             <th>Photo</th>

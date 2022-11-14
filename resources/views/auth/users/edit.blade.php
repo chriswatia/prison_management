@@ -32,7 +32,7 @@
                         <select class="form-select form-select-sm" aria-label=".form-select-lg example" required="required" name="role_id">
                             <option selected></option>
                             @foreach ($roles as $role)
-                            <option name="role_id" value="{{ $role->id }}"> {{ $role->name }}</option>
+                            <option {{ old('role_id', $user->role_id) ==  $role->id ? 'selected' : ''}} value="{{ $role->id }}">{{ $role->name }}</option>
                             @endforeach
                             
                         </select>
