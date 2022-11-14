@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('user.user')
 
 @section('title', 'Inmate List')
 
@@ -7,8 +7,8 @@
         <div class="card mt-4">
             <div class="card-header">
                 <h4 class="">Inmate List
-                    <a href="{{ url('admin/add-inmate') }}" class="btn btn-primary btn-sm float-end">Add Inmate
-                    </a>
+                    {{-- <a href="{{ url('admin/add-inmate') }}" class="btn btn-primary btn-sm float-end">Add Inmate
+                    </a> --}}
                 </h4>
             </div>
             <div class="card-body">
@@ -21,7 +21,6 @@
                             <th>ID</th>
                             <th>Code</th>
                             <th>Name</th>
-                            <th>Id Number</th>
                             <th>Gender</th>
                             <th>DOB</th>
                             <th>Address</th>
@@ -40,7 +39,6 @@
                                 <td>{{ $inmate->id }}</td>
                                 <td>{{ $inmate->code }}</td>
                                 <td>{{ $inmate->firstname . ' ' . $inmate->middlename . ' ' . $inmate->lastname }}</td>
-                                <td>{{ $inmate->id_number }}</td>
                                 <td>{{ $inmate->gender }}</td>
                                 <td>{{ $inmate->dob }}</td>
                                 <td>{{ $inmate->address }}</td>
@@ -60,9 +58,9 @@
                                 </td>
                                 <td>
                                     <a class="btn btn-success btn-sm"
-                                        href="{{ url('admin/edit-inmate/' . $inmate->id) }}">Edit</a> |
-                                    <a class="btn btn-danger btn-sm"
-                                        href="{{ url('admin/delete-inmate/' . $inmate->id) }}">Delete</a>
+                                        href="{{ url('/inmate/view/' . $inmate->id) }}">View</a>
+                                    {{-- <a class="btn btn-danger btn-sm"
+                                        href="{{ url('admin/delete-inmate/' . $inmate->id) }}">Delete</a> --}}
 
                                 </td>
 

@@ -7,7 +7,7 @@
         <div class="card mt-4">
             <div class="card-header">
                 <h4 class="">Inmate Details
-                    <a href="{{ url('minister/inmates') }}" class="btn btn-primary btn-sm float-end">Close
+                    <a href="{{ url('minister/inmates') }}" class="btn btn-danger btn-sm float-end">Close
                     </a>
                 </h4>
             </div>

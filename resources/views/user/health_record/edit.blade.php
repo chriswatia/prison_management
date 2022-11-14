@@ -1,4 +1,4 @@
-@extends('lawyer.lawyer')
+@extends('user.user')
 
 @section('title', 'View Health Record')
 
@@ -7,7 +7,7 @@
         <div class="card mt-4">
             <div class="card-header">
                 <h4 class="">Health Record Details
-                    <a href="{{ url('lawyer/health_records') }}" class="btn btn-danger btn-sm float-end">Close
+                    <a href="{{ url('health_records') }}" class="btn btn-danger btn-sm float-end">Close
                     </a>
                 </h4>
             </div>

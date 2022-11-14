@@ -12,14 +12,21 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Auth::routes();
 
 
 //USER ROUTES
 Route::middleware(['auth'])->group(function (){
-    Route::get('/', [App\Http\Controllers\HomeController::class, 'index']);
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index']);
+    Route::get('/', [App\Http\Controllers\UserDashboardController::class, 'index']);
+    Route::get('inmates', [App\Http\Controllers\UserDashboardController::class, 'inmates']);
+    Route::get('inmate/view/{id}', [App\Http\Controllers\UserDashboardController::class, 'viewInmate']);
+    Route::get('health_records', [App\Http\Controllers\UserDashboardController::class, 'inmateHealthRecords']);
+    Route::get('inmate/view/health_record/{id}', [App\Http\Controllers\UserDashboardController::class, 'viewInmateHealthRecord']);
+    Route::get('visits', [App\Http\Controllers\UserDashboardController::class, 'inmeateVisits']);
 });
 
-Auth::routes();
+
 
 Route::prefix('minister')->middleware(['auth','IsMinister'])->group(function (){
     Route::get('/', [App\Http\Controllers\Minister\DashboardController::class, 'index']);

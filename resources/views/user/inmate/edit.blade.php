@@ -1,13 +1,13 @@
-@extends('layouts.master')
+@extends('user.user')
 
-@section('title', 'Edit Inmate')
+@section('title', 'View Inmate')
 
 @section('content')
     <div class="container-fluid px-4">
         <div class="card mt-4">
             <div class="card-header">
-                <h4 class="">Edit Inmate
-                    <a href="{{ url('admin/inmates') }}" class="btn btn-danger btn-sm float-end">Close
+                <h4 class="">Inmate Details
+                    <a href="{{ url('/inmates') }}" class="btn btn-danger btn-sm float-end">Close
                     </a>
                 </h4>
             </div>
@@ -44,21 +44,17 @@
                             </div>                            
                         </div>
                         <div class="row">
-                            <div class="col-md-3 mb-3">
+                            <div class="col-md-4 mb-3">
                                 <label for="">First Name</label>
                                 <input type="text" name="firstname" value="{{ $inmate->firstname }}" class="form-control" required>
                             </div>
-                            <div class="col-md-3 mb-3">
+                            <div class="col-md-4 mb-3">
                                 <label for="">Middle Name</label>
                                 <input type="text" name="middlename" value="{{ $inmate->middlename }}" class="form-control">
                             </div>
-                            <div class="col-md-3 mb-3">
+                            <div class="col-md-4 mb-3">
                                 <label for="">Last Name</label>
                                 <input type="text" name="lastname" value="{{ $inmate->lastname }}" class="form-control" required>
-                            </div>
-                            <div class="col-md-3 mb-3">
-                                <label for="">ID Number</label>
-                                <input type="number" name="id_number" value="{{ $inmate->id_number }}" class="form-control" required>
                             </div>
                         </div>
 
@@ -70,7 +66,11 @@
                             </div>
                             <div class="col-md-4 mb-3">
                                 <label for="">Gender</label>
-                                <select class="form-select form-select-sm" aria-label=".form-select-lg example" required="required" name="gender">                                    
+                                <select class="form-select form-select-sm" aria-label=".form-select-lg example" required="required" name="gender">
+                                    {{-- <option name="gender" value="Male">Male</option>
+                                    <option name="gender" value="Female">Female</option> --}}
+                                    
+                                    <option value="{{ $inmate->gender }}" selected>Select Gender</option>
                                 <option value="Male" @if (old($inmate->gender) == "Male") {{ 'selected' }} @endif>Male</option>
                                 <option value="Female" @if (old($inmate->gender) == "Female") {{ 'selected' }} @endif>Female</option>
                                 </select>
@@ -89,7 +89,7 @@
                         <div class="row">
                             <div class="col-md-6 mb-3">
                                 <label for="">Address</label>
-                                <textarea name="address" class="form-control">{{ $inmate->address }}</textarea>
+                                <textarea name="address" value="{{ $inmate->address }}" class="form-control"></textarea>
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label for="">Photo</label>
@@ -170,9 +170,9 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row">
+                    {{-- <div class="row">
                         <button type="submit" class="btn btn-primary">Save</button>
-                    </div>
+                    </div> --}}
                 </form>
             </div>
         </div>

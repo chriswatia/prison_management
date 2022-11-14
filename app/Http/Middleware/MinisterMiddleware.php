@@ -21,7 +21,7 @@ class MinisterMiddleware
             if(Auth::user()->role_id == '3'){ 
                 return $next($request);
             } else{
-                return redirect('/')->with('status', 'Access Denied! You are not a Minister');
+                return redirect('/home')->with('status', 'Access Denied! You are not a Minister');
             }
         }else{
             return redirect('/login')->with('status', 'Please Login First');

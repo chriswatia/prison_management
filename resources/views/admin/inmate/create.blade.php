@@ -41,17 +41,21 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-4 mb-3">
+                            <div class="col-md-3 mb-3">
                                 <label for="">First Name</label>
                                 <input type="text" name="firstname" id="" class="form-control" required>
                             </div>
-                            <div class="col-md-4 mb-3">
+                            <div class="col-md-3 mb-3">
                                 <label for="">Middle Name</label>
                                 <input type="text" name="middlename" id="" class="form-control">
                             </div>
-                            <div class="col-md-4 mb-3">
+                            <div class="col-md-3 mb-3">
                                 <label for="">Last Name</label>
                                 <input type="text" name="lastname" id="" class="form-control" required>
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <label for="">ID Number</label>
+                                <input type="number" name="id_number" id="" class="form-control" required>
                             </div>
                         </div>
 

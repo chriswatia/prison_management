@@ -21,7 +21,7 @@ class LawyerMiddleware
             if(Auth::user()->role_id == '4'){ 
                 return $next($request);
             } else{
-                return redirect('/')->with('status', 'Access Denied! You are not a Lawyer');
+                return redirect('/home')->with('status', 'Access Denied! You are not a Lawyer');
             }
         }else{
             return redirect('/login')->with('status', 'Please Login First');

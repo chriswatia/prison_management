@@ -47,6 +47,7 @@ class InmateRequest extends FormRequest
             'court' => 'nullable',
             'virdict' => 'nullable',
             'date_of_judgemet' => 'nullable',
+            'id_number' => 'required'
         ];
 
         return $rules;

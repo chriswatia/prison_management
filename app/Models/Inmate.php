@@ -33,5 +33,6 @@ class Inmate extends Model
         'court',
         'virdict',
         'date_of_judgemet',
+        'id_number'
     ];
 }
