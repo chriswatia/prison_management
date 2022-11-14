@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class AdminMiddleware
+class MinisterMiddleware
 {
     /**
      * Handle an incoming request.
@@ -18,14 +18,13 @@ class AdminMiddleware
     public function handle(Request $request, Closure $next)
     {
         if(Auth::check()){
-            if(Auth::user()->role_id == '1'){ 
+            if(Auth::user()->role_id == '3'){ 
                 return $next($request);
             } else{
-                return redirect('/')->with('status', 'Access Denied! You are not Admin');
+                return redirect('/')->with('status', 'Access Denied! You are not a Minister');
             }
         }else{
             return redirect('/login')->with('status', 'Please Login First');
         }
-        
     }
 }

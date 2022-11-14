@@ -6,7 +6,10 @@
     <div class="container-fluid px-4">
         <div class="card mt-4">
             <div class="card-header">
-                <h4 class="">Edit User</h4>
+                <h4 class="">Edit User
+                <a href="{{ url('admin/users') }}" class="btn btn-primary btn-sm float-end">Back
+                </a>
+            </h4>
             </div>
             <div class="card-body">
                 @if ($errors->any())

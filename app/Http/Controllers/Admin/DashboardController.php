@@ -9,7 +9,6 @@ use App\Http\Controllers\Controller;
 class DashboardController extends Controller
 {
     public function index(){
-        $cell_blocks = CellBlock::all();
-        return view('admin.dashboard', compact('cell_blocks'));
+        return view('admin.dashboard');
     }
 }

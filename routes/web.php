@@ -21,7 +21,23 @@ Route::middleware(['auth'])->group(function (){
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::prefix('minister')->middleware(['auth','IsMinister'])->group(function (){
+    Route::get('/', [App\Http\Controllers\Minister\DashboardController::class, 'index']);
+    Route::get('inmates', [App\Http\Controllers\Minister\DashboardController::class, 'inmates']);
+    Route::get('inmate/view/{id}', [App\Http\Controllers\Minister\DashboardController::class, 'viewInmate']);
+    Route::get('health_records', [App\Http\Controllers\Minister\DashboardController::class, 'inmateHealthRecords']);
+    Route::get('inmate/view/health_record/{id}', [App\Http\Controllers\Minister\DashboardController::class, 'viewInmateHealthRecord']);
+    Route::get('visits', [App\Http\Controllers\Minister\DashboardController::class, 'inmeateVisits']);
+});
+
+Route::prefix('lawyer')->middleware(['auth','IsLawyer'])->group(function (){
+    Route::get('/', [App\Http\Controllers\Lawyer\DashboardController::class, 'index']);
+    Route::get('inmates', [App\Http\Controllers\Lawyer\DashboardController::class, 'inmates']);
+    Route::get('inmate/view/{id}', [App\Http\Controllers\Lawyer\DashboardController::class, 'viewInmate']);
+    Route::get('health_records', [App\Http\Controllers\Lawyer\DashboardController::class, 'inmateHealthRecords']);
+    Route::get('inmate/view/health_record/{id}', [App\Http\Controllers\Lawyer\DashboardController::class, 'viewInmateHealthRecord']);
+    Route::get('visits', [App\Http\Controllers\Lawyer\DashboardController::class, 'inmeateVisits']);
+});
 
 
 Route::prefix('admin')->middleware(['auth','IsAdmin'])->group(function (){
