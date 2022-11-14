@@ -11,15 +11,19 @@ use App\Models\InmateCrime;
 use App\Models\HealthRecord;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class UserDashboardController extends Controller
 {
     public function index(){
-        return view('user.dashboard');
+        $inmates = Inmate::join('requests as r', 'inmates.id', 'r.inmate_id')->where('r.status', 'Approved')->where('r.requester_id', Auth::user()->id)->get();
+        $health_records = HealthRecord::join('requests as r', 'health_records.inmate_id', 'r.inmate_id')->where('r.status', 'Approved')->where('r.requester_id', Auth::user()->id)->get();
+        $visits = Visit::join('requests as r', 'visits.inmate_id', 'r.inmate_id')->where('r.status', 'Approved')->where('r.requester_id', Auth::user()->id)->get();
+        return view('user.dashboard', compact('inmates', 'health_records', 'visits'));
     }
 
     public function inmates(){
-        $inmates = Inmate::all();
+        $inmates = Inmate::join('requests as r', 'inmates.id', 'r.inmate_id')->where('r.status', 'Approved')->where('r.requester_id', Auth::user()->id)->get();
         return view('user.inmate.index', compact('inmates'));
     }
 
@@ -34,7 +38,7 @@ class UserDashboardController extends Controller
     }
 
     public function inmateHealthRecords(){
-        $health_records = HealthRecord::all();
+        $health_records = HealthRecord::join('requests as r', 'health_records.inmate_id', 'r.inmate_id')->where('r.status', 'Approved')->where('r.requester_id', Auth::user()->id)->get();
         return view('user.health_record.index', compact('health_records'));
     }
 
@@ -46,7 +50,7 @@ class UserDashboardController extends Controller
     }
 
     public function inmeateVisits(){
-        $visits = Visit::all();
+        $visits = Visit::join('requests as r', 'visits.inmate_id', 'r.inmate_id')->where('r.status', 'Approved')->where('r.requester_id', Auth::user()->id)->get();
         return view('user.visit.index', compact('visits'));
     }
 }

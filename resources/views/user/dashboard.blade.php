@@ -18,11 +18,11 @@
                         <div class="row no-gutters align-items-center">
                             <div class="col mr-2">
                                 <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                    Cell Blocks</div>
-                                <div class="h5 mb-0 font-weight-bold text-gray-800">{{ count(App\Models\CellBlock::all()) }}</div>
+                                    My Requests</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">{{ count(App\Models\RequestModel::where('requester_id', Auth::user()->id)->get()) }}</div>
                             </div>
                             <div class="col-auto">
-                                <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                                <i class="fas fa-list fa-2x text-gray-300"></i>
                             </div>
                         </div>
                     </div>
@@ -34,8 +34,8 @@
                         <div class="row no-gutters align-items-center">
                             <div class="col mr-2">
                                 <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                    No of Inmates</div>
-                                <div class="h5 mb-0 font-weight-bold text-gray-800">{{ count(App\Models\Inmate::all()) }}
+                                    Inmates</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">{{ count($inmates) }}
                                 </div>
                             </div>
                             <div class="col-auto">
@@ -51,8 +51,8 @@
                         <div class="row no-gutters align-items-center">
                             <div class="col mr-2">
                                 <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                                    Crimes</div>
-                                <div class="h5 mb-0 font-weight-bold text-gray-800">{{ count(App\Models\Crime::all()) }}
+                                    Health Records</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">{{ count($health_records) }}
                                 </div>
                             </div>
                             <div class="col-auto">
@@ -67,9 +67,9 @@
                     <div class="card-body">
                         <div class="row no-gutters align-items-center">
                             <div class="col mr-2">
-                                <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Today's Visits
+                                <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Visits
                                 </div>
-                                <div class="h5 mb-0 font-weight-bold text-gray-800">{{ count(App\Models\Visit::where(\DB::raw('DATE(`created_at`)'), now()->format('Y-m-d'))->get()) }}
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">{{ count($visits) }}
                                 </div>
                             </div>
                             <div class="col-auto">

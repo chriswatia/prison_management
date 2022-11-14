@@ -20,6 +20,10 @@
                     <div class="sb-nav-link-icon"><i class="fas fa-list"></i></div>
                     Visit Records
                 </a>
+                <a class="nav-link" href="{{ url('requests') }}">
+                    <div class="sb-nav-link-icon"><i class="fas fa-list"></i></div>
+                    My Requests
+                </a>
             </div>
         </div>
         <div class="sb-sidenav-footer">

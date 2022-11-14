@@ -58,7 +58,7 @@
                                 </td>
                                 <td>
                                     <a class="btn btn-success btn-sm"
-                                        href="{{ url('/inmate/view/' . $inmate->id) }}">View</a>
+                                        href="{{ url('inmates/view/' . $inmate->inmate_id) }}">View</a>
                                     {{-- <a class="btn btn-danger btn-sm"
                                         href="{{ url('admin/delete-inmate/' . $inmate->id) }}">Delete</a> --}}
 

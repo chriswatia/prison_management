@@ -71,6 +71,19 @@
                     <div class="sb-nav-link-icon"><i class="fas fa-list"></i></div>
                     Roles
                 </a>
+                <div class="sb-sidenav-menu-heading">Requests</div>
+                <a class="nav-link" href="{{ url('admin/pending_requests') }}">
+                    <div class="sb-nav-link-icon"><i class="fas fa-list"></i></div>
+                    Pending Requests
+                </a>
+                <a class="nav-link" href="{{ url('admin/approved_requests') }}">
+                    <div class="sb-nav-link-icon"><i class="fas fa-list"></i></div>
+                    Approved Requests
+                </a>
+                <a class="nav-link" href="{{ url('admin/rejected_requests') }}">
+                    <div class="sb-nav-link-icon"><i class="fas fa-list"></i></div>
+                    Rejected Requests
+                </a>
             </div>
         </div>
         <div class="sb-sidenav-footer">

@@ -20,10 +20,18 @@ Route::middleware(['auth'])->group(function (){
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index']);
     Route::get('/', [App\Http\Controllers\UserDashboardController::class, 'index']);
     Route::get('inmates', [App\Http\Controllers\UserDashboardController::class, 'inmates']);
-    Route::get('inmate/view/{id}', [App\Http\Controllers\UserDashboardController::class, 'viewInmate']);
+    Route::get('inmates/view/{id}', [App\Http\Controllers\UserDashboardController::class, 'viewInmate']);
     Route::get('health_records', [App\Http\Controllers\UserDashboardController::class, 'inmateHealthRecords']);
     Route::get('inmate/view/health_record/{id}', [App\Http\Controllers\UserDashboardController::class, 'viewInmateHealthRecord']);
     Route::get('visits', [App\Http\Controllers\UserDashboardController::class, 'inmeateVisits']);
+
+    //REQUESTS ROUTES
+    Route::get('requests', [App\Http\Controllers\RequestController::class, 'index']);
+    Route::get('add-request', [App\Http\Controllers\RequestController::class, 'create']);
+    Route::post('add-request', [App\Http\Controllers\RequestController::class, 'store']);
+    Route::get('edit-request/{id}', [App\Http\Controllers\RequestController::class, 'edit']);
+    Route::put('edit-request/{id}', [App\Http\Controllers\RequestController::class, 'update']);
+    Route::get('delete-request/{id}', [App\Http\Controllers\RequestController::class, 'destroy']);
 });
 
 
@@ -108,4 +116,12 @@ Route::prefix('admin')->middleware(['auth','IsAdmin'])->group(function (){
     Route::get('edit-health_record/{id}', [App\Http\Controllers\HealthRecordController::class, 'edit']);
     Route::put('edit-health_record/{id}', [App\Http\Controllers\HealthRecordController::class, 'update']);
     Route::get('delete-health_record/{id}', [App\Http\Controllers\HealthRecordController::class, 'destroy']);
+
+    //Requests
+    Route::get('pending_requests', [App\Http\Controllers\RequestController::class, 'pendingRequests']);
+    Route::get('approved_requests', [App\Http\Controllers\RequestController::class, 'approvedRequests']);
+    Route::get('rejected_requests', [App\Http\Controllers\RequestController::class, 'rejectedRequests']);
+
+    Route::get('reject-request/{id}', [App\Http\Controllers\RequestController::class, 'rejectRequest']);
+    Route::get('approve-request/{id}', [App\Http\Controllers\RequestController::class, 'approveRequest']);
 });
