@@ -16,7 +16,7 @@ class AdminSeeder extends Seeder
      */
     public function run()
     {
-        $roles = ['Admin', 'User', 'Minister', 'Lawyer'];
+        $roles = ['Warden', 'Family Members', 'Minister Representative', 'Lawyer', 'Prison Officer'];
 
         foreach($roles as $role){
             $role = Role::create([
@@ -25,7 +25,7 @@ class AdminSeeder extends Seeder
                 "updated_at" => \Carbon\Carbon::now()]);
         }
 
-        $admin = Role::where('name', 'Admin')->first();
+        $admin = Role::where('name', 'Warden')->first();
 
         
 

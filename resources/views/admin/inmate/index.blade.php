@@ -59,11 +59,12 @@
                                         alt="">
                                 </td>
                                 <td>
+                                    <a class="btn btn-primary btn-sm"
+                                        href="{{ url('admin/transfer-inmate/' . $inmate->id) }}">Transfer</a> |
                                     <a class="btn btn-success btn-sm"
                                         href="{{ url('admin/edit-inmate/' . $inmate->id) }}">Edit</a> |
                                     <a class="btn btn-danger btn-sm"
                                         href="{{ url('admin/delete-inmate/' . $inmate->id) }}">Delete</a>
-
                                 </td>
 
                             </tr>

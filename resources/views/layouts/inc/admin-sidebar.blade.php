@@ -7,22 +7,40 @@
                     <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                     Dashboard
                 </a>
-                <div class="sb-sidenav-menu-heading">Prison Records</div>
-                <a class="nav-link" href="{{ url('admin/inmates') }}">
-                    <div class="sb-nav-link-icon"><i class="fas fa-list"></i></div>
-                    Inmate List
-                </a>
-                <a class="nav-link" href="{{ url('admin/health_records') }}">
-                    <div class="sb-nav-link-icon"><i class="fas fa-list"></i></div>
-                    Health Records
-                </a>
-                <a class="nav-link" href="{{ url('admin/visits') }}">
-                    <div class="sb-nav-link-icon"><i class="fas fa-list"></i></div>
-                    Visit Records
-                </a>
+                @if (Auth::user()->role_id == 1)
+                    <div class="sb-sidenav-menu-heading">Prison Records</div>
+                    <a class="nav-link" href="{{ url('admin/inmates') }}">
+                        <div class="sb-nav-link-icon"><i class="fas fa-list"></i></div>
+                        Inmate List
+                    </a>
+                    <a class="nav-link" href="{{ url('admin/health_records') }}">
+                        <div class="sb-nav-link-icon"><i class="fas fa-list"></i></div>
+                        Health Records
+                    </a>
+                    <a class="nav-link" href="{{ url('admin/visits') }}">
+                        <div class="sb-nav-link-icon"><i class="fas fa-list"></i></div>
+                        Visit Records
+                    </a>
+                @endif
+                @if (Auth::user()->role_id == 5)
+                    <a class="nav-link" href="{{ url('admin/health_records') }}">
+                        <div class="sb-nav-link-icon"><i class="fas fa-list"></i></div>
+                        Health Records
+                    </a>
+                    <a class="nav-link" href="{{ url('admin/visits') }}">
+                        <div class="sb-nav-link-icon"><i class="fas fa-list"></i></div>
+                        Visit Records
+                    </a>
+                    <div class="sb-sidenav-menu-heading">Configuration</div>
+                    <a class="nav-link" href="{{ url('admin/diseases') }}">
+                        <div class="sb-nav-link-icon"><i class="fas fa-list"></i></div>
+                        Diseases List
+                    </a>
+                @endif
+                @if (Auth::user()->role_id == 1)
                 <div class="sb-sidenav-menu-heading">Configuration</div>
-                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseCellBlock"
-                    aria-expanded="false" aria-controls="collapseCellBlock">
+                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
+                    data-bs-target="#collapseCellBlock" aria-expanded="false" aria-controls="collapseCellBlock">
                     <div class="sb-nav-link-icon"><i class="fas fa-border-all"></i></div>
                     Cell Block
                     <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
@@ -84,6 +102,8 @@
                     <div class="sb-nav-link-icon"><i class="fas fa-list"></i></div>
                     Rejected Requests
                 </a>
+                @endif
+                
             </div>
         </div>
         <div class="sb-sidenav-footer">

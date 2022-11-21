@@ -104,6 +104,25 @@ class InmateController extends Controller
         return redirect('admin/inmates')->with('message', "Inmate updated successfully");
     }
 
+    public function transfer($id){
+        $inmate = Inmate::findOrFail($id);
+        $cell = CellBlock::where('id', $inmate->cell_block_id)->first()->name;
+        $cell_blocks = CellBlock::all();
+        $inmate_crimes = InmateCrime::join('crimes as c', 'inmates_crimes.crime_id', 'c.id')->where('inmate_id', $inmate->id)->get();
+        
+        $crimes = Crime::all();
+        return view('admin.inmate.transfer', compact('inmate', 'cell','inmate_crimes','cell_blocks','crimes'));
+    }
+
+    public function transferInmate(Request $request, $id)
+    {
+        $data = $request->all();
+        $Inmate = Inmate::findOrFail($id);
+        $Inmate->update($data);
+
+        return redirect('admin/inmates')->with('message', "Inmate transfered successfully");
+    }
+
     public function destroy($id)
     {
         $Inmate = Inmate::findOrFail($id);

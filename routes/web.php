@@ -91,6 +91,8 @@ Route::prefix('admin')->middleware(['auth','IsAdmin'])->group(function (){
     Route::post('add-inmate', [App\Http\Controllers\InmateController::class, 'store']);
     Route::get('edit-inmate/{id}', [App\Http\Controllers\InmateController::class, 'edit']);
     Route::put('edit-inmate/{id}', [App\Http\Controllers\InmateController::class, 'update']);
+    Route::get('transfer-inmate/{id}', [App\Http\Controllers\InmateController::class, 'transfer']);
+    Route::put('transfer-inmate/{id}', [App\Http\Controllers\InmateController::class, 'transferInmate']);
     Route::get('delete-inmate/{id}', [App\Http\Controllers\InmateController::class, 'destroy']);
 
     //VISIT ROUTES
